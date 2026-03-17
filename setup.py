@@ -14,7 +14,7 @@ setup(
     description="A handy Python toolset for batch processing Excel files",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/luojianghao/excel-utils",
+    url="https://github.com/LlllJjjHhh/excel-utils",
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",

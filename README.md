@@ -13,7 +13,7 @@ A handy Python toolset for batch processing Excel files. Supports merging multip
 ## Installation
 
 ```bash
-git clone https://github.com/<your-username>/excel-utils.git
+git clone https://github.com/LlllJjjHhh/excel-utils.git
 cd excel-utils
 pip install -r requirements.txt
 ```
