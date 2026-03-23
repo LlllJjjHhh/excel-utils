@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from typing import Dict, List, Union, Optional
+from typing import Dict, Optional
 
 
 class DataStats:
@@ -92,21 +92,42 @@ class DataStats:
         html += f"<li>Total Rows: {summary['total_rows']}</li>"
         html += f"<li>Total Columns: {summary['total_columns']}</li>"
         html += f"<li>Memory Usage: {summary['memory_usage']}</li>"
-        html += f"<li>Numeric Columns: {', '.join(summary['numeric_columns'])}</li>"
-        html += f"<li>Categorical Columns: {', '.join(summary['categorical_columns'])}</li>"
+        html += (
+            f"<li>Numeric Columns: {', '.join(summary['numeric_columns'])}</li>"
+        )
+        html += (
+            f"<li>Categorical Columns: {', '.join(summary['categorical_columns'])}</li>"
+        )
         html += "</ul>"
         
         html += "<h2>Missing Values</h2>"
-        html += "<table border='1'><tr><th>Column</th><th>Missing Values</th><th>Missing Percentage</th></tr>"
+        html += (
+            "<table border='1'>"
+            "<tr><th>Column</th><th>Missing Values</th>"
+            "<th>Missing Percentage</th></tr>"
+        )
         for col in summary['missing_values']:
-            html += f"<tr><td>{col}</td><td>{summary['missing_values'][col]}</td><td>{summary['missing_percentage'][col]}%</td></tr>"
+            pct = summary['missing_percentage'][col]
+            html += f"<tr><td>{col}</td><td>{summary['missing_values'][col]}</td>"
+            html += f"<td>{pct}%</td></tr>"
         html += "</table>"
         
         if numeric_stats:
             html += "<h2>Numeric Column Statistics</h2>"
-            html += "<table border='1'><tr><th>Column</th><th>Mean</th><th>Median</th><th>Min</th><th>Max</th><th>Std Dev</th></tr>"
+            html += (
+                "<table border='1'>"
+                "<tr><th>Column</th><th>Mean</th><th>Median</th>"
+                "<th>Min</th><th>Max</th><th>Std Dev</th></tr>"
+            )
             for col, stats in numeric_stats.items():
-                html += f"<tr><td>{col}</td><td>{stats['mean']:.4f}</td><td>{stats['median']:.4f}</td><td>{stats['min']:.4f}</td><td>{stats['max']:.4f}</td><td>{stats['std']:.4f}</td></tr>"
+                html += (
+                    f"<tr><td>{col}</td>"
+                    f"<td>{stats['mean']:.4f}</td>"
+                    f"<td>{stats['median']:.4f}</td>"
+                    f"<td>{stats['min']:.4f}</td>"
+                    f"<td>{stats['max']:.4f}</td>"
+                    f"<td>{stats['std']:.4f}</td></tr>"
+                )
             html += "</table>"
         
         html += "</body></html>"

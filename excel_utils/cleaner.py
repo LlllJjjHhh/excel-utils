@@ -1,5 +1,5 @@
 import pandas as pd
-from typing import List, Optional, Union
+from typing import List, Optional
 
 
 class DataCleaner:
